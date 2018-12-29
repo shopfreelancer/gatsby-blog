@@ -1,21 +1,64 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { graphql, Link } from "gatsby"
 
 import Layout from '../components/layout'
-import Image from '../components/image'
 import SEO from '../components/seo'
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+import {
+    Container,
+    Row,
+    Col
+} from 'reactstrap';
+
+
+const IndexPage = ({ data }) => (
+    <Layout>
+        <SEO title="Blog" keywords={ [`reisen`, `japan`, `tokio`] }/>
+        <h1>Blog</h1>
+        <Container fluid>
+            { data.allMarkdownRemark.edges.map(({ node }) => (
+
+                <Row key={ node.id }>
+                    <Col xs="12" sm="4">
+                        <img src={node.frontmatter.image} alt="" />
+                    </Col>
+                    <Col xs="12" sm="8">
+                        <h3>
+                            <Link to={ node.fields.slug }>
+                                { node.frontmatter.title }{ " " }
+                            </Link>
+                        </h3>
+                        <p>{ node.excerpt }</p>
+                        <span class="posted-on">Veröffentlicht am <b>{ node.frontmatter.date }</b></span>
+                    </Col>
+
+                </Row>
+            )) }
+        </Container>
+    </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  query BlogIndexQuery {
+    allMarkdownRemark {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
+            date(formatString: "DD MMMM, YYYY")
+            image
+          }
+          excerpt
+          fields {           
+            slug          
+            }
+        }
+      }
+    }
+  }
+  `

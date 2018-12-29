@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import './layout.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './layout.css'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -30,7 +31,7 @@ const Layout = ({ children }) => (
         >
           {children}
           <footer>
-            © 2018 The ACME company
+            © 2018 Mein Reiseblog
           </footer>
         </div>
       </>
