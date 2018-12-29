@@ -6,11 +6,7 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    NavLink
 } from 'reactstrap';
 
 class Header extends Component {
@@ -28,34 +24,20 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
+                <Navbar color="dark" dark expand="md">
                     <NavbarBrand href="/">{this.props.siteTitle}</NavbarBrand>
                     <NavbarToggler onClick={ this.toggle }/>
                     <Collapse isOpen={ this.state.isOpen } navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/about/">About</NavLink>
+                                <NavLink href="/blog/">Blog</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/imprint/">Imprint</NavLink>
+                                <NavLink href="/about/">Über mich</NavLink>
                             </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Options
-                                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        Option 1
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        Option 2
-                                    </DropdownItem>
-                                    <DropdownItem divider/>
-                                    <DropdownItem>
-                                        Reset
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
+                            <NavItem>
+                                <NavLink href="/imprint/">Impressum</NavLink>
+                            </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
