@@ -11,7 +11,7 @@ const BlogPage = ({ data }) => (
       {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
               <h3>
-                  <Link to={node.frontmatter.path}>
+                  <Link to={node.frontmatter.slug}>
                   {node.frontmatter.title}{" "}
                   <span>
                       — {node.frontmatter.date}</span>
@@ -26,7 +26,7 @@ const BlogPage = ({ data }) => (
 export default BlogPage
 
 export const query = graphql`
-  query {
+  query BlogIndexQuery {
     allMarkdownRemark {
       totalCount
       edges {
@@ -34,7 +34,7 @@ export const query = graphql`
           id
           frontmatter {
             title
-            path
+            slug
             date(formatString: "DD MMMM, YYYY")
           }
           excerpt
