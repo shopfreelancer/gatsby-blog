@@ -14,13 +14,13 @@ A small project to check out the static site generator Gatby.js. As an alternati
 
 ## Develop
 
-    Git clone, Navigate into directory and start it up.
+Git clone, Navigate into directory and start it up.
 
-    ```sh
+```sh
     npm install
     cd gatsby-blog/
     gatsby develop
-    ```
+```
 
 ## 🎓 Learning Gatsby
 

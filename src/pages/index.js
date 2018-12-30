@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => (
         <Container fluid>
             { data.allMarkdownRemark.edges.map(({ node }) => (
 
-                <Row key={ node.id } class="row row_blog mb-3 pb-2">
+                <div key={ node.id } class="row row_blog mb-3 pb-2">
                     <Col xs="12" sm="4">
                         <img src={node.frontmatter.image} alt="" />
                     </Col>
@@ -31,7 +31,7 @@ const IndexPage = ({ data }) => (
                         <p>{ node.excerpt }</p>
                         <span className="posted-on">Veröffentlicht am <b>{ node.frontmatter.date }</b></span>
                     </Col>
-                </Row>
+                </div>
             )) }
         </Container>
     </Layout>
